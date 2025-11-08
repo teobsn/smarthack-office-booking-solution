@@ -1,0 +1,109 @@
+/* src/app/map/map.component.css */
+
+.map-container {
+  /* Give the map a defined size to view the content */
+  width: 100%;
+  height: 90vh; 
+  border: 1px solid #ccc;
+  overflow: hidden;
+  
+  /* Cursors for user experience */
+  cursor: grab; 
+  user-select: none; 
+}
+
+.map-container.panning {
+  cursor: grabbing;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Removed rect-only selectors — styles now apply to any element under
+   DESKS/ROOMS via the broader selectors below. */
+/* Hover effect for shape elements (rect, path, circle, ellipse, polygon, polyline, line)
+   that either have an inkscape:label themselves or are descendants of a group
+   labeled DESKS or ROOMS. We explicitly exclude group (<g>) elements so that
+   hovering a child does not trigger the group's :hover, which would affect all children. */
+
+/* base selector: shape elements with the label, or shape descendants of labeled groups */
+rect[inkscape\:label="DESKS"],
+path[inkscape\:label="DESKS"],
+circle[inkscape\:label="DESKS"],
+ellipse[inkscape\:label="DESKS"],
+polygon[inkscape\:label="DESKS"],
+polyline[inkscape\:label="DESKS"],
+line[inkscape\:label="DESKS"],
+rect[inkscape\:label="ROOMS"],
+path[inkscape\:label="ROOMS"],
+circle[inkscape\:label="ROOMS"],
+ellipse[inkscape\:label="ROOMS"],
+polygon[inkscape\:label="ROOMS"],
+polyline[inkscape\:label="ROOMS"],
+line[inkscape\:label="ROOMS"],
+g[inkscape\:label="DESKS"] rect,
+g[inkscape\:label="DESKS"] path,
+g[inkscape\:label="DESKS"] circle,
+g[inkscape\:label="DESKS"] ellipse,
+g[inkscape\:label="DESKS"] polygon,
+g[inkscape\:label="DESKS"] polyline,
+g[inkscape\:label="DESKS"] line,
+g[inkscape\:label="ROOMS"] rect,
+g[inkscape\:label="ROOMS"] path,
+g[inkscape\:label="ROOMS"] circle,
+g[inkscape\:label="ROOMS"] ellipse,
+g[inkscape\:label="ROOMS"] polygon,
+g[inkscape\:label="ROOMS"] polyline,
+g[inkscape\:label="ROOMS"] line {
+  transition: all 0.18s ease;
+  cursor: pointer;
+}
+
+/* Hover only targets the individual shape — not the group */
+rect[inkscape\:label="DESKS"]:hover,
+path[inkscape\:label="DESKS"]:hover,
+circle[inkscape\:label="DESKS"]:hover,
+ellipse[inkscape\:label="DESKS"]:hover,
+polygon[inkscape\:label="DESKS"]:hover,
+polyline[inkscape\:label="DESKS"]:hover,
+line[inkscape\:label="DESKS"]:hover,
+rect[inkscape\:label="ROOMS"]:hover,
+path[inkscape\:label="ROOMS"]:hover,
+circle[inkscape\:label="ROOMS"]:hover,
+ellipse[inkscape\:label="ROOMS"]:hover,
+polygon[inkscape\:label="ROOMS"]:hover,
+polyline[inkscape\:label="ROOMS"]:hover,
+line[inkscape\:label="ROOMS"]:hover,
+g[inkscape\:label="DESKS"] rect:hover,
+g[inkscape\:label="DESKS"] path:hover,
+g[inkscape\:label="DESKS"] circle:hover,
+g[inkscape\:label="DESKS"] ellipse:hover,
+g[inkscape\:label="DESKS"] polygon:hover,
+g[inkscape\:label="DESKS"] polyline:hover,
+g[inkscape\:label="DESKS"] line:hover,
+g[inkscape\:label="ROOMS"] rect:hover,
+g[inkscape\:label="ROOMS"] path:hover,
+g[inkscape\:label="ROOMS"] circle:hover,
+g[inkscape\:label="ROOMS"] ellipse:hover,
+g[inkscape\:label="ROOMS"] polygon:hover,
+g[inkscape\:label="ROOMS"] polyline:hover,
+g[inkscape\:label="ROOMS"] line:hover {
+  filter: brightness(1.2) drop-shadow(0 0 0.05rem black);
+  opacity: 0.9;
+}
+
+/* Special hover effect for empty/available spaces (shape elements with a fill style)
+   Applies to any matching shape that has inline style containing the fill color. */
+rect[inkscape\:label="DESKS"][style*="fill:#e6e6e6"]:hover,
+path[inkscape\:label="DESKS"][style*="fill:#e6e6e6"]:hover,
+rect[inkscape\:label="ROOMS"][style*="fill:#e6e6e6"]:hover,
+path[inkscape\:label="ROOMS"][style*="fill:#e6e6e6"]:hover,
+g[inkscape\:label="DESKS"] rect[style*="fill:#e6e6e6"]:hover,
+g[inkscape\:label="DESKS"] path[style*="fill:#e6e6e6"]:hover,
+g[inkscape\:label="ROOMS"] rect[style*="fill:#e6e6e6"]:hover,
+g[inkscape\:label="ROOMS"] path[style*="fill:#e6e6e6"]:hover {
+  fill: #4CAF50 !important;
+  opacity: 0.8;
+}
